@@ -1,0 +1,22 @@
+# Getting Started
+A simple spring cloud stream app implements a simple example of transformational grammar transformer
+
+## Building
+```bash
+mvn clean package
+```
+
+## Running
+Create the following stream definition and deploy from data flow. (first register tggtransform from where you build this app)
+```
+http --port=5000 | tggtransform |log
+```
+
+### Post the following:
+```bash
+curl http://localhost:5000 -X POST --data '{ "data": "Are we earthlings" }' -H 'Content-Type: application/json'
+curl http://localhost:5000 -X POST --data '{ "data": "Are we human" }' -H 'Content-Type: application/json'
+curl http://localhost:5000 -X POST --data '{ "data": "Is Glenn an earthling" }' -H 'Content-Type: application/json'
+curl http://localhost:5000 -X POST --data '{ "data": "Is Glenn an human" }' -H 'Content-Type: application/json'
+curl http://localhost:5000 -X POST --data '{ "data": "Is Glenn a typical earthling" }' -H 'Content-Type: application/json'
+```
